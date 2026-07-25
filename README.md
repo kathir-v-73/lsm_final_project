@@ -126,8 +126,3 @@ To impress your mentor, discuss the architectural trade-offs:
 2. **True Single Page Experience (SPA):** Section switching on the dashboards is handled via client-side CSS and JS display transitions without trigger page reloads, ensuring a smooth, premium experience.
 3. **Dynamic Charting:** Dashboard graphs dynamically fetch database counts instead of using static mock values, keeping analytics in sync with actual collection items.
 4. **Branded Micro-Animations:** Incorporates CSS animations, progress bar fills (using `IntersectionObserver`), and animated stats counters to establish a modern product aesthetic.
-
-### ⚠️ Disadvantages (Limitations)
-1. **Concurrency Limitations (JSON-based):** Reading and writing directly to JSON files is not thread-safe. If multiple administrators write data at the exact same millisecond, race conditions might occur. (Explain that this is by design for the local internship version and is resolved by swapping JSON files with a real database like MongoDB or PostgreSQL).
-2. **Password Security:** Passwords are currently stored in plain text inside the JSON files for simple review and testing. In a full production environment, these must be hashed using a library like `bcrypt` or `werkzeug.security` before storing them.
-3. **Session State Storage:** Session tokens are stored in the client-side browser cookie using Flask's default client-side sessions (cryptographically signed). For high-security environments, server-side session stores (like Redis) should be introduced.
